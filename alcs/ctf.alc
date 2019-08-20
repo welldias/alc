@@ -1,0 +1,25 @@
+# CSI Comércio Soluções Inteligentes
+# Autor: Wellington Dias
+# Data: 22 de março de 2007
+#
+# Definições e regras de filtros para os traces do CTF
+
+# dd/mm
+set DateTrace=([0-3]\d\/[01]\d)
+
+# hh:mm:ss.sss
+set HourTrace=(([012][0-9])(:)([0-5][0-9])(:)([0-5][0-9]).(\d{3}))
+
+# Informação do trace
+set TraceInf=(DEB|INF|CSI|ERR)
+
+# ID da thread
+set TrhdID=\d{1,6}
+
+# Mensagem (usada para 2N)
+set MsgCSI=\b[A-Z0-9 ]+\b
+
+# Mensagem Criptografada e 'zonada'
+set MsgCriptCSI=\b[[:xdigit:]]+\b
+
+

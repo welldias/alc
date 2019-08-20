@@ -1,0 +1,89 @@
+# CSI Comércio Soluções Inteligentes
+# Autor: Wellington Dias
+# Data: 22 de março de 2007
+#
+# Definições e regras de filtros para os traces ICC do CTF
+
+load cript
+
+include regex
+include ctf
+
+set Name=FiltroIcc
+set Description=Regras e filtros para análise do ICC
+set Extention=.icc
+set Path=\ctf_csi\log
+set Exclusive=FALSE
+set CheckUpdate=FALSE
+
+# Tamanho da Mensagem
+set MsgLen=\d{1,6}
+
+# Numero do PDV
+set PdvNumber=\d{12}
+
+context
+{
+  set Name=Transac
+  set Description=Filtro para captura completa de uma transação
+
+  set BufferRec    =^[DateTrace] [HourTrace] [TraceInf] \([TrhdID]\) thread_trataMsgCliente: buffer cript recebido do pdv \(tam=[MsgLen]\): [MsgCriptCSI]$
+  set BufferSend   =^[DateTrace] [HourTrace] [TraceInf] \([TrhdID]\) respondeCliente: buffer cript enviado ao pdv \([PdvNumber]\): [MsgCriptCSI]$
+  set Buffer2N     =^[DateTrace] [HourTrace] [TraceInf] \([TrhdID]\) escreve_transacao: buffer enviado ao pdv \([PdvNumber]\): [MsgCSI]$
+
+  set BufferRecI   =[30]thread_trataMsgCliente: buffer cript recebido do pdv \(tam=[MsgLen]\): [MsgCriptCSI]$
+  set BufferSendI  =[30]respondeCliente: buffer cript enviado ao pdv \([PdvNumber]\): [MsgCriptCSI]$
+  set Buffer2NI    =[30]escreve_transacao: buffer enviado ao pdv \([PdvNumber]\): [MsgCSI]$
+
+  set BufferRecIL  =[30,52]thread_trataMsgCliente: buffer cript recebido do pdv
+  set BufferSendIL =[30,44]respondeCliente: buffer cript enviado ao pdv
+  set Buffer2NIL   =[30,39]escreve_transacao: buffer enviado ao pdv
+
+  input PdvNumber
+
+  head
+  {
+    #logical OR
+    #logical NOT
+    logical AND
+    get Buffer2NIL
+    get BufferRecIL
+  }
+  body
+  {
+    get BufferSendIL
+  }
+  foot
+  {
+    get BufferSend
+  }
+
+#  onclick
+#  {
+#	run cript.Set2N([Line])
+#	run cript.DecriptMsg([Line])
+#  }
+
+}
+
+context
+{
+  set Name=ErrorList
+  set Description=Filtro para listagem de erros
+
+  set TraceErr     =\b(ERR)\b
+  set TraceErrIL   =[19,3]ERR
+
+  input PdvNumber
+
+  head
+  {
+  }
+  body
+  {
+    get TraceErrIL
+  }
+  foot
+  {
+  }
+}

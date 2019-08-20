@@ -1,0 +1,63 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: tre - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\WELLIN~1.DIA\LOCALS~1\Temp\RSP1CC.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /I "../win32" /I "../lib" /I "../gnulib/lib" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "TRE_EXPORTS" /D "HAVE_CONFIG_H" /FR"lib/" /Fp"lib/tre.pch" /YX /Fo"lib/" /Fd"lib/" /FD /c 
+"C:\csi_projects\CSI\alc\src\tre\lib\regcomp.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\regerror.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\regexec.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\tre-ast.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\tre-compile.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\tre-match-approx.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\tre-match-backtrack.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\tre-match-parallel.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\tre-mem.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\tre-parse.c"
+"C:\csi_projects\CSI\alc\src\tre\lib\tre-stack.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\WELLIN~1.DIA\LOCALS~1\Temp\RSP1CC.tmp" 
+Creating temporary file "C:\DOCUME~1\WELLIN~1.DIA\LOCALS~1\Temp\RSP1CD.tmp" with contents
+[
+msvcrt.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib msvcprt.lib /nologo /dll /incremental:no /pdb:"lib/tre.pdb" /machine:I386 /def:".\tre.def" /out:"lib/tre.dll" /implib:"lib/tre.lib" 
+.\lib\regcomp.obj
+.\lib\regerror.obj
+.\lib\regexec.obj
+".\lib\tre-ast.obj"
+".\lib\tre-compile.obj"
+".\lib\tre-match-approx.obj"
+".\lib\tre-match-backtrack.obj"
+".\lib\tre-match-parallel.obj"
+".\lib\tre-mem.obj"
+".\lib\tre-parse.obj"
+".\lib\tre-stack.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\WELLIN~1.DIA\LOCALS~1\Temp\RSP1CD.tmp"
+<h3>Output Window</h3>
+Compiling...
+regcomp.c
+regerror.c
+regexec.c
+tre-ast.c
+tre-compile.c
+tre-match-approx.c
+tre-match-backtrack.c
+tre-match-parallel.c
+tre-mem.c
+tre-parse.c
+tre-stack.c
+Linking...
+   Creating library lib/tre.lib and object lib/tre.exp
+
+
+
+<h3>Results</h3>
+tre.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
